@@ -21,6 +21,7 @@ import {
   Globe,
   Menu,
   X,
+  CheckCircle,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -235,25 +236,66 @@ export default function Portfolio() {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-black">
-              <CardHeader>
-                <CardTitle>Python Library Management System</CardTitle>
-                <CardDescription>A comprehensive library management system with a user-friendly GUI.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="border-black text-black">
-                    Python
-                  </Badge>
-                  <Badge variant="outline" className="border-black text-black">
-                    Tkinter
-                  </Badge>
-                  <Badge variant="outline" className="border-black text-black">
-                    SQL
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+            <Link href="/projects/library-system" className="block group">
+              <Card className="group hover:shadow-xl transition-all duration-300 border-black cursor-pointer h-full">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <CardTitle className="group-hover:text-gray-600 transition-colors">
+                        Python Library Management System
+                      </CardTitle>
+                      <CardDescription className="mt-2">
+                        A comprehensive desktop application for efficient library record management, featuring an intuitive graphical interface built with Python and Tkinter.
+                      </CardDescription>
+                    </div>
+                    <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors flex-shrink-0 ml-4" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="border-black text-black">
+                        Python
+                      </Badge>
+                      <Badge variant="outline" className="border-black text-black">
+                        Tkinter
+                      </Badge>
+                      <Badge variant="outline" className="border-black text-black">
+                        SQLite
+                      </Badge>
+                      <Badge variant="outline" className="border-black text-black">
+                        Desktop App
+                      </Badge>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        CRUD Operations
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        Search & Filter
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        Data Export
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        Cross-Platform
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-gray-100">
+                      <p className="text-sm font-medium text-black group-hover:text-gray-600 transition-colors">
+                        View Project Details →
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
 
             <Card className="group hover:shadow-xl transition-all duration-300 border-black">
               <CardHeader>
