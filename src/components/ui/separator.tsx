@@ -27,7 +27,7 @@ const separatorVariants = cva(
 )
 
 export interface SeparatorComponentProps
-  extends React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>,
+  extends Omit<React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>, "decorative" | "orientation">,
     VariantProps<typeof separatorVariants> {}
 
 const Separator = React.forwardRef<
