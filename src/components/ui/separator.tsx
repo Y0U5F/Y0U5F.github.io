@@ -40,8 +40,8 @@ const Separator = React.forwardRef<
   ) => (
     <SeparatorPrimitive.Root
       ref={ref}
-      decorative={decorative}
-      orientation={orientation}
+      decorative={decorative ?? true}
+      orientation={orientation ?? "horizontal"}
       className={cn(separatorVariants({ orientation, decorative }), className)}
       {...props}
     />
