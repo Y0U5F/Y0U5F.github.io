@@ -26,13 +26,13 @@ const separatorVariants = cva(
   }
 )
 
-export interface SeparatorProps
+export interface SeparatorComponentProps
   extends React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>,
     VariantProps<typeof separatorVariants> {}
 
 const Separator = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
-  SeparatorProps
+  SeparatorComponentProps
 >(
   (
     { className, orientation = "horizontal", decorative = true, ...props },
