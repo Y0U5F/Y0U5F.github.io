@@ -297,22 +297,66 @@ export default function Portfolio() {
               </Card>
             </Link>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-black">
-              <CardHeader>
-                <CardTitle>Power BI Dashboard for Data Insights</CardTitle>
-                <CardDescription>Detailed reports and dashboards to analyze trends and drive decision-making.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="border-black text-black">
-                    Power BI
-                  </Badge>
-                  <Badge variant="outline" className="border-black text-black">
-                    Data Analysis
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+            <Link href="/projects/olist-etl" className="block group">
+              <Card className="group hover:shadow-xl transition-all duration-300 border-black cursor-pointer h-full">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <CardTitle className="group-hover:text-gray-600 transition-colors">
+                        Olist E-commerce Data Warehouse
+                      </CardTitle>
+                      <CardDescription className="mt-2">
+                        Enterprise-grade ELT pipeline implementing Medallion Architecture for Brazilian e-commerce analytics, featuring Snowflake data warehousing and automated quality testing.
+                      </CardDescription>
+                    </div>
+                    <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors flex-shrink-0 ml-4" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="border-black text-black">
+                        Snowflake
+                      </Badge>
+                      <Badge variant="outline" className="border-black text-black">
+                        Apache Airflow
+                      </Badge>
+                      <Badge variant="outline" className="border-black text-black">
+                        dbt
+                      </Badge>
+                      <Badge variant="outline" className="border-black text-black">
+                        Power BI
+                      </Badge>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        Medallion Architecture
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        26+ Data Quality Tests
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        Star Schema Design
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                        Business Intelligence
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-gray-100">
+                      <p className="text-sm font-medium text-black group-hover:text-gray-600 transition-colors">
+                        View Enterprise DWH Project →
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>
