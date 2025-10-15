@@ -1963,14 +1963,19 @@ ingestion_task >> bronze_task`}
 
                       // Add active state to clicked tab
                       const activeTab = document.querySelector(`[data-tab="${tab.id}"]`);
-                      activeTab.classList.remove('border-transparent', 'text-gray-400');
-                      activeTab.classList.add('border-green-400', 'text-green-400');
+                      if (activeTab) {
+                        activeTab.classList.remove('border-transparent', 'text-gray-400');
+                        activeTab.classList.add('border-green-400', 'text-green-400');
+                      }
 
                       // Hide all content
                       document.querySelectorAll('[data-content]').forEach(c => c.classList.add('hidden'));
 
                       // Show selected content
-                      document.querySelector(`[data-content="${tab.id}"]`).classList.remove('hidden');
+                      const selectedContent = document.querySelector(`[data-content="${tab.id}"]`);
+                      if (selectedContent) {
+                        selectedContent.classList.remove('hidden');
+                      }
                     }}
                     data-tab={tab.id}
                   >
