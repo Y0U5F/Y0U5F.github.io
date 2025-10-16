@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Database, GitBranch, Zap, Shield, TrendingUp, Clock, DollarSign, Layers, Workflow, Server, BarChart3 } from 'lucide-react'
 
 export default function OlistETLPage() {
@@ -139,12 +140,18 @@ export default function OlistETLPage() {
             </div>
 
             {/* Workflow Graph */}
-            <div className="mt-10">
-              <img
-                src="/Olist_workflow.png"
-                alt="Olist ETL Workflow Diagram"
-                className="mx-auto max-w-full h-auto rounded-lg shadow-lg"
-              />
+            <div className="mt-12 mb-8">
+              <div className="relative max-w-5xl mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-xl blur-xl"></div>
+                <Image
+                  src="/Olist_workflow.png"
+                  alt="Olist ETL Workflow Diagram"
+                  width={1000}
+                  height={750}
+                  className="relative z-10 mx-auto w-full max-w-5xl h-auto rounded-xl shadow-2xl border border-white/20"
+                  priority
+                />
+              </div>
             </div>
 
             {/* Call to Action Buttons */}
@@ -310,19 +317,89 @@ export default function OlistETLPage() {
                   </p>
 
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
-                    <div className="flex items-center">
-                      <span className="text-2xl mr-2">⭐</span>
-                      <span>Star Schema design</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="text-2xl mr-2">📈</span>
-                      <span>Business aggregations</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="text-2xl mr-2">⚡</span>
-                      <span>Query optimization</span>
-                    </div>
-                  </div>
+                     <div className="flex items-center">
+                       <span className="text-2xl mr-2">⭐</span>
+                       <span>Star Schema design</span>
+                     </div>
+                     <div className="flex items-center">
+                       <span className="text-2xl mr-2">📈</span>
+                       <span>Business aggregations</span>
+                     </div>
+                     <div className="flex items-center">
+                       <span className="text-2xl mr-2">⚡</span>
+                       <span>Query optimization</span>
+                     </div>
+                   </div>
+
+                   {/* Star Schema Diagram */}
+                   <div className="mt-8 p-6 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
+                     <h4 className="text-lg font-bold text-gray-900 mb-4 text-center">🏗️ Gold Layer - Star Schema Architecture</h4>
+                     <div className="flex flex-col items-center space-y-4">
+                       {/* Fact Table - Center */}
+                       <div className="relative">
+                         <div className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold text-center shadow-lg">
+                           📊 FACT_ORDERS
+                         </div>
+                         <div className="text-xs text-gray-600 mt-1 text-center">Central fact table with metrics</div>
+
+                         {/* Dimension Tables - Connected */}
+                         <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
+                           <div className="bg-green-600 text-white px-4 py-2 rounded-lg font-semibold text-center shadow-lg">
+                             👥 DIM_CUSTOMERS
+                           </div>
+                           <div className="text-xs text-gray-600 mt-1 text-center">Customer demographics</div>
+                         </div>
+
+                         <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
+                           <div className="bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold text-center shadow-lg">
+                             📦 DIM_PRODUCTS
+                           </div>
+                           <div className="text-xs text-gray-600 mt-1 text-center">Product catalog</div>
+                         </div>
+
+                         <div className="absolute -left-20 top-1/2 transform -translate-y-1/2">
+                           <div className="bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold text-center shadow-lg">
+                             🏪 DIM_SELLERS
+                           </div>
+                           <div className="text-xs text-gray-600 mt-1 text-center">Seller information</div>
+                         </div>
+
+                         <div className="absolute -right-20 top-1/2 transform -translate-y-1/2">
+                           <div className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold text-center shadow-lg">
+                             📍 DIM_LOCATION
+                           </div>
+                           <div className="text-xs text-gray-600 mt-1 text-center">Geographic data</div>
+                         </div>
+
+                         <div className="absolute top-1/2 -left-24 transform -translate-y-1/2">
+                           <div className="bg-indigo-600 text-white px-3 py-2 rounded-lg font-semibold text-center shadow-lg">
+                             ⏰ DIM_TIME
+                           </div>
+                           <div className="text-xs text-gray-600 mt-1 text-center">Temporal dimensions</div>
+                         </div>
+
+                         {/* Connection Lines */}
+                         <div className="absolute top-0 left-1/2 w-0.5 h-16 bg-gray-400 transform -translate-x-1/2"></div>
+                         <div className="absolute bottom-0 left-1/2 w-0.5 h-16 bg-gray-400 transform -translate-x-1/2"></div>
+                         <div className="absolute top-1/2 left-0 w-20 h-0.5 bg-gray-400"></div>
+                         <div className="absolute top-1/2 right-0 w-20 h-0.5 bg-gray-400"></div>
+                         <div className="absolute top-1/2 -left-20 w-4 h-0.5 bg-gray-400"></div>
+                       </div>
+
+                       {/* Schema Description */}
+                       <div className="mt-8 p-4 bg-white rounded-lg border border-gray-200 max-w-2xl">
+                         <h5 className="font-bold text-gray-900 mb-2">📋 Key Metrics in Fact Table:</h5>
+                         <div className="grid grid-cols-2 gap-2 text-sm text-gray-700">
+                           <div>• Order value & quantity</div>
+                           <div>• Payment amounts</div>
+                           <div>• Delivery times</div>
+                           <div>• Customer satisfaction</div>
+                           <div>• Product performance</div>
+                           <div>• Geographic trends</div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
                 </div>
               </div>
 
@@ -397,7 +474,7 @@ export default function OlistETLPage() {
       </section>
 
       {/* Technical Architecture */}
-      <section className="py-20 bg-white">
+      <section id="architecture" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Technical Architecture</h2>
@@ -456,9 +533,192 @@ export default function OlistETLPage() {
             </div>
           </div>
         </div>
-      </section>
+       </section>
 
-      {/* Project Insights */}
+       {/* Code Showcase */}
+       <section className="py-20 bg-gray-50">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center mb-16">
+             <h2 className="text-4xl font-bold text-gray-900 mb-6">Code Showcase</h2>
+             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+               Key code snippets demonstrating the data engineering implementation
+             </p>
+           </div>
+
+           <div className="grid lg:grid-cols-2 gap-8 mb-12">
+             {/* dbt Model Example */}
+             <div className="bg-gray-900 rounded-xl p-6 text-white overflow-x-auto">
+               <div className="flex items-center justify-between mb-4">
+                 <h3 className="text-lg font-semibold text-green-400">dbt Gold Layer Model</h3>
+                 <span className="text-xs bg-green-600 px-2 py-1 rounded">SQL</span>
+               </div>
+               <pre className="text-sm text-gray-300 leading-relaxed">
+{`-- Gold Layer: Customer Analytics Fact Table
+WITH customer_orders AS (
+    SELECT
+        c.customer_id,
+        c.customer_unique_id,
+        c.customer_zip_code_prefix,
+        c.customer_city,
+        c.customer_state,
+        COUNT(o.order_id) as total_orders,
+        SUM(o.order_purchase_timestamp) as first_purchase,
+        SUM(o.payment_value) as total_spent,
+        AVG(o.payment_value) as avg_order_value,
+        MAX(o.order_purchase_timestamp) as last_purchase,
+        DATEDIFF(MAX(o.order_purchase_timestamp),
+                MIN(o.order_purchase_timestamp)) as customer_lifespan_days
+    FROM silver_customers c
+    LEFT JOIN silver_orders o ON c.customer_id = o.customer_id
+    GROUP BY c.customer_id, c.customer_unique_id,
+             c.customer_zip_code_prefix, c.customer_city, c.customer_state
+)
+
+SELECT
+    customer_id,
+    customer_unique_id,
+    customer_zip_code_prefix,
+    customer_city,
+    customer_state,
+    total_orders,
+    first_purchase,
+    total_spent,
+    avg_order_value,
+    last_purchase,
+    customer_lifespan_days,
+    CASE
+        WHEN total_orders >= 3 AND total_spent >= 500 THEN 'High Value'
+        WHEN total_orders >= 2 THEN 'Regular'
+        ELSE 'New'
+    END as customer_segment
+FROM customer_orders
+QUALIFY ROW_NUMBER() OVER (ORDER BY total_spent DESC) <= 100000`}
+               </pre>
+             </div>
+
+             {/* Airflow DAG Example */}
+             <div className="bg-gray-900 rounded-xl p-6 text-white overflow-x-auto">
+               <div className="flex items-center justify-between mb-4">
+                 <h3 className="text-lg font-semibold text-blue-400">Apache Airflow DAG</h3>
+                 <span className="text-xs bg-blue-600 px-2 py-1 rounded">Python</span>
+               </div>
+               <pre className="text-sm text-gray-300 leading-relaxed">
+{`from airflow import DAG
+from airflow.operators.python import PythonOperator
+from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
+from datetime import datetime, timedelta
+
+default_args = {
+    'owner': 'data-engineering-team',
+    'depends_on_past': False,
+    'start_date': datetime(2024, 1, 1),
+    'email_on_failure': True,
+    'retries': 3,
+    'retry_delay': timedelta(minutes=5)
+}
+
+dag = DAG(
+    'olist_etl_pipeline',
+    default_args=default_args,
+    description='Complete ELT pipeline for Olist e-commerce data',
+    schedule_interval='@daily',
+    catchup=False,
+    max_active_runs=1,
+    tags=['olist', 'etl', 'medallion']
+)
+
+def validate_source_data():
+    """Validate source data quality before ingestion"""
+    import pandas as pd
+    from sqlalchemy import create_engine
+
+    # Connection and validation logic
+    pass
+
+def run_dbt_models():
+    """Execute dbt models and tests"""
+    import subprocess
+    result = subprocess.run(['dbt', 'run', '--models', 'gold'],
+                          capture_output=True, text=True)
+    return result.returncode == 0
+
+# Task definitions
+validate_task = PythonOperator(
+    task_id='validate_source_data',
+    python_callable=validate_source_data,
+    dag=dag
+)
+
+bronze_ingestion = SnowflakeOperator(
+    task_id='bronze_layer_ingestion',
+    sql='./sql/bronze_ingestion.sql',
+    snowflake_conn_id='snowflake_default',
+    dag=dag
+)
+
+silver_transform = SnowflakeOperator(
+    task_id='silver_layer_transform',
+    sql='./sql/silver_transform.sql',
+    snowflake_conn_id='snowflake_default',
+    dag=dag
+)
+
+gold_analytics = PythonOperator(
+    task_id='gold_layer_analytics',
+    python_callable=run_dbt_models,
+    dag=dag
+)
+
+# Dependencies
+validate_task >> bronze_ingestion >> silver_transform >> gold_analytics`}
+               </pre>
+             </div>
+           </div>
+
+           {/* Data Quality Tests */}
+           <div className="bg-gray-900 rounded-xl p-6 text-white overflow-x-auto">
+             <div className="flex items-center justify-between mb-4">
+               <h3 className="text-lg font-semibold text-purple-400">dbt Data Quality Tests</h3>
+               <span className="text-xs bg-purple-600 px-2 py-1 rounded">YAML</span>
+             </div>
+             <pre className="text-sm text-gray-300 leading-relaxed">
+{`version: 2
+models:
+  - name: gold_customer_analytics
+    tests:
+      - unique:
+          column_name: customer_id
+      - not_null:
+          column_name: customer_unique_id
+      - accepted_values:
+          column_name: customer_state
+          values: ['SP', 'RJ', 'MG', 'RS', 'PR', 'SC', 'BA', 'DF', 'GO', 'ES', 'PE', 'CE', 'PA', 'MT', 'MS', 'PB', 'PI', 'AL', 'SE', 'TO', 'RO', 'AC', 'AP', 'AM', 'RR']
+      - dbt_utils.expression_is_true:
+          expression: "total_spent >= 0"
+          condition: "total_spent IS NOT NULL"
+    columns:
+      - name: customer_segment
+        tests:
+          - accepted_values:
+              values: ['High Value', 'Regular', 'New']
+          - not_null
+
+  - name: gold_order_facts
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('silver_orders')
+      - dbt_utils.at_least_one
+      - relationships:
+          to: ref('gold_customer_analytics')
+          field: customer_id
+          config:
+            severity: warn`}
+             </pre>
+           </div>
+         </div>
+       </section>
+
+       {/* Project Insights */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
