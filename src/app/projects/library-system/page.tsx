@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -39,8 +39,9 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { PAGE_METADATA } from "@/lib/metadata"
 
-export default function LibrarySystemProject() {
+function LibrarySystemProjectContent() {
   const [activeTab, setActiveTab] = useState("overview")
 
   const projectMetrics = [
@@ -567,6 +568,10 @@ export default function LibrarySystemProject() {
           </div>
         </div>
       </section>
-    </div>
-  )
+  </div>
+)
+}
+
+export default function LibrarySystemProject() {
+return <LibrarySystemProjectContent />;
 }

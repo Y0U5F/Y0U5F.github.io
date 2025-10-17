@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { generateMetadata, SITE_CONFIG } from "@/lib/metadata";
 import "./globals.css";
+import { MetadataProvider } from "./components/MetadataProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 // Export static metadata for Next.js App Router
-export const metadata: Metadata = generateMetadata();
+export const metadata = generateMetadata();
 
 export default function RootLayout({
   children,
@@ -32,7 +33,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/logo olist.png" />
       </head>
       <body className={inter.className}>
-        {children}
+        <MetadataProvider>
+          {children}
+        </MetadataProvider>
       </body>
     </html>
   );

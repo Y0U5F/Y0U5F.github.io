@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Database, GitBranch, Zap, Shield, TrendingUp, Clock, DollarSign, Layers, Workflow, Server, BarChart3, AlertCircle, Download, CheckCircle, BookOpen, Brain, Cloud, Users, Github, FileText, Filter, Star, TestTube, Calendar, RefreshCw, Quote } from 'lucide-react'
+import { PAGE_METADATA } from '@/lib/metadata'
 
-export default function OlistETLPage() {
+function OlistETLPageContent() {
   const [activeCodeTab, setActiveCodeTab] = useState<'gold_model' | 'airflow_dag' | 'data_tests'>('gold_model')
 
   const codeFiles: Array<{ id: 'gold_model' | 'airflow_dag' | 'data_tests', name: string, language: string, color: string }> = [
@@ -207,7 +208,7 @@ const challenges = [
 ];
 
  return (
-    <div className="min-h-screen bg-white">
+   <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -243,12 +244,16 @@ const challenges = [
             </div>
 
             {/* Main Title */}
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
-              Olist E-commerce
-              <span className="block text-4xl md:text-5xl text-blue-200 mt-2">
-                Data Pipeline
-              </span>
-            </h1>
+            <div className="flex items-center justify-center mb-6">
+              <div>
+                <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+                  Olist E-commerce
+                  <span className="block text-4xl md:text-5xl text-blue-200 mt-2">
+                    Data Pipeline
+                  </span>
+                </h1>
+              </div>
+            </div>
 
             {/* Subtitle */}
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -1234,4 +1239,8 @@ const challenges = [
        </section>
    </div>
  );
+}
+
+export default function OlistETLPage() {
+ return <OlistETLPageContent />;
 }

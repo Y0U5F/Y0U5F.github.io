@@ -1,6 +1,6 @@
 "use client"
 // Final deployment to Y0U5F.github.io
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -25,8 +25,9 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { PAGE_METADATA } from "@/lib/metadata"
 
-export default function Portfolio() {
+function PortfolioContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -51,7 +52,9 @@ export default function Portfolio() {
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold text-black">YOUSEF MAHMOUD</div>
+            <div className="flex items-center">
+              <span className="text-2xl font-bold text-black">YOUSEF MAHMOUD</span>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
@@ -184,7 +187,7 @@ export default function Portfolio() {
               <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
                 <div className="absolute inset-0 bg-black rounded-full blur-3xl opacity-10"></div>
                 <Image
-                  src="/Me.jpeg"
+                  src="Me.jpeg"
                   alt="Yousef Mahmoud - Data Engineer"
                   width={320}
                   height={320}
@@ -554,6 +557,10 @@ export default function Portfolio() {
           </div>
         </div>
       </footer>
-    </div>
-  )
+  </div>
+)
+}
+
+export default function Portfolio() {
+  return <PortfolioContent />;
 }
