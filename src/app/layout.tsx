@@ -24,12 +24,12 @@ export default function RootLayout({
         <link rel="canonical" href={SITE_CONFIG.url} />
 
         {/* Favicon links */}
-        <link rel="icon" type="image/png" sizes="32x32" href="/My logo.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/My logo.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/My logo.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/logo olist.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/logo olist.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/logo olist.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/My logo 2.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/My logo 2.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/My logo 2.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/My logo 2.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/My logo 2.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/My logo 2.png" />
       </head>
       <body className={inter.className}>
         {children}
