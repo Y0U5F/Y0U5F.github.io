@@ -71,7 +71,7 @@ export function generateMetadata(overrides: Partial<PageMetadata> = {}): Metadat
 
   const metadata = { ...defaultMetadata, ...overrides };
 
-  return {
+  const metadataResult: Metadata = {
     title: metadata.title,
     description: metadata.description,
     keywords: metadata.keywords?.join(", "),
@@ -79,6 +79,9 @@ export function generateMetadata(overrides: Partial<PageMetadata> = {}): Metadat
     creator: SITE_CONFIG.name,
     publisher: SITE_CONFIG.name,
     robots: "index, follow",
+    alternates: {
+      canonical: SITE_CONFIG.url,
+    },
     openGraph: metadata.openGraph ? {
       title: metadata.openGraph.title,
       description: metadata.openGraph.description,
@@ -101,10 +104,14 @@ export function generateMetadata(overrides: Partial<PageMetadata> = {}): Metadat
       ),
       creator: SITE_CONFIG.twitterHandle,
     } : undefined,
-    alternates: {
-      canonical: SITE_CONFIG.url,
-    },
   };
+
+  // Add titleTemplate for dynamic page titles and metadataBase for proper social media image resolution
+  return {
+    ...metadataResult,
+    titleTemplate: `%s | ${SITE_CONFIG.name}`,
+    metadataBase: new URL(SITE_CONFIG.url),
+  } as Metadata & { titleTemplate: string };
 }
 
 export const PAGE_METADATA = {
