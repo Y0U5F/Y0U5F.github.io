@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import { generateMetadata, SITE_CONFIG } from "@/lib/metadata";
+import GoogleAnalyticsEvents from "@/components/GoogleAnalyticsEvents";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -55,6 +57,10 @@ export default function RootLayout({
           }}
         />
         {/* END: Google Analytics Scripts using Env Var */}
+
+        <Suspense fallback={null}>
+          <GoogleAnalyticsEvents />
+        </Suspense>
       </body>
     </html>
   );
