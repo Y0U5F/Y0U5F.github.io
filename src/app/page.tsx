@@ -25,10 +25,15 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { PAGE_METADATA } from "@/lib/metadata"
 
 function PortfolioContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [formStatus, setFormStatus] = useState('')
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -44,6 +49,43 @@ function PortfolioContent() {
       element.scrollIntoView({ behavior: "smooth" })
     }
     closeMenu()
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setFormStatus('sending')
+
+    try {
+      const response = await fetch('https://formspree.io/f/mzzjwzak', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email
+        })
+      })
+
+      if (response.ok) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setFormStatus(''), 3000)
+      } else {
+        setFormStatus('error')
+      }
+    } catch (error) {
+      setFormStatus('error')
+    }
   }
 
   return (
@@ -177,7 +219,7 @@ function PortfolioContent() {
                 <Link href="https://linkedin.com/in/y0usefma7m0ud" className="text-gray-600 hover:text-black transition-colors">
                   <Linkedin className="w-6 h-6" />
                 </Link>
-                <Link href="mailto:y0usfma7m0d@gmail.com" className="text-gray-600 hover:text-black transition-colors">
+                <Link href="mailto:yousef.soliman.de@gmail.com" className="text-gray-600 hover:text-black transition-colors">
                   <Mail className="w-6 h-6" />
                 </Link>
               </div>
@@ -363,7 +405,7 @@ function PortfolioContent() {
           </div>
         </div>
       </section>
-
+      
       {/* Skills Section */}
       <section id="skills" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
@@ -372,22 +414,76 @@ function PortfolioContent() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Languages */}
             <Card className="border-black">
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Code className="w-5 h-5 mr-2 text-black" />
-                  Programming
+                  Languages
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex flex-wrap gap-2">
                   <Badge className="bg-black text-white hover:bg-gray-800">Python</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">TypeScript</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Bash Script</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">C/C++</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Java</Badge>
                 </div>
               </CardContent>
             </Card>
 
+            {/* Big Data & Streaming */}
+            <Card className="border-black">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Database className="w-5 h-5 mr-2 text-black" />
+                  Big Data & Streaming
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-black text-white hover:bg-gray-800">Apache Spark</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Apache Hadoop</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Apache Kafka</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Orchestration & CI/CD */}
+            <Card className="border-black">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Code className="w-5 h-5 mr-2 text-black" />
+                  Orchestration & CI/CD
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-black text-white hover:bg-gray-800">Apache Airflow</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">GitHub Actions</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Cloud & Infrastructure */}
+            <Card className="border-black">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Globe className="w-5 h-5 mr-2 text-black" />
+                  Cloud & Infrastructure
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-black text-white hover:bg-gray-800">AWS</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Docker</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Git & GitHub</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Databases */}
             <Card className="border-black">
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -397,14 +493,52 @@ function PortfolioContent() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-black text-white hover:bg-gray-800">Mongo DB</Badge>
-                  <Badge className="bg-black text-white hover:bg-gray-800">SQL</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Snowflake</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">MongoDB</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Cassandra</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">SQL Server</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Oracle</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">SQLite</Badge>
                 </div>
               </CardContent>
             </Card>
 
+            {/* Data Science & Visualization */}
+            <Card className="border-black">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Globe className="w-5 h-5 mr-2 text-black" />
+                  Data Science & Visualization
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-black text-white hover:bg-gray-800">Pandas</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">NumPy</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Plotly</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Power BI</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Frameworks & Tools */}
+            <Card className="border-black">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Code className="w-5 h-5 mr-2 text-black" />
+                  Frameworks & Tools
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-black text-white hover:bg-gray-800">Anaconda</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Flask</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Streamlit</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* ML & NLP */}
             <Card className="border-black">
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -484,7 +618,7 @@ function PortfolioContent() {
                     </div>
                     <div>
                       <p className="font-medium text-black">Email</p>
-                      <p className="text-gray-600">y0usfma7m0d@gmail.com</p>
+                      <p className="text-gray-600">yousef.soliman.de@gmail.com</p>
                     </div>
                   </div>
 
@@ -516,11 +650,15 @@ function PortfolioContent() {
                 <CardTitle>Send me a message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-black mb-2">Your Name</label>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
                       className="w-full px-3 py-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                     />
                   </div>
@@ -528,17 +666,44 @@ function PortfolioContent() {
                     <label className="block text-sm font-medium text-black mb-2">Your Email</label>
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
                       className="w-full px-3 py-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-black mb-2">Message</label>
                     <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
                       rows={4}
                       className="w-full px-3 py-2 border border-black rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                     ></textarea>
                   </div>
-                  <Button className="w-full bg-black hover:bg-gray-800 text-white">Send Message</Button>
+                  
+                  {formStatus === 'success' && (
+                    <div className="p-3 bg-green-50 border border-green-500 text-green-700 rounded-md text-sm">
+                      Message sent successfully! I'll get back to you soon.
+                    </div>
+                  )}
+                  
+                  {formStatus === 'error' && (
+                    <div className="p-3 bg-red-50 border border-red-500 text-red-700 rounded-md text-sm">
+                      Failed to send message. Please email me directly at yousef.soliman.de@gmail.com
+                    </div>
+                  )}
+                  
+                  <Button 
+                    type="submit" 
+                    disabled={formStatus === 'sending'}
+                    className="w-full bg-black hover:bg-gray-800 text-white disabled:opacity-50"
+                  >
+                    {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
+                  </Button>
                 </form>
               </CardContent>
             </Card>
@@ -557,8 +722,8 @@ function PortfolioContent() {
           </div>
         </div>
       </footer>
-  </div>
-)
+    </div>
+  )
 }
 
 export default function Portfolio() {
