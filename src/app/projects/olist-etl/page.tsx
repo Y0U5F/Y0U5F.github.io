@@ -8,6 +8,9 @@ import { PAGE_METADATA } from '@/lib/metadata'
 
 function OlistETLPageContent() {
   const [activeCodeTab, setActiveCodeTab] = useState<'gold_model' | 'airflow_dag' | 'data_tests'>('gold_model')
+  useEffect(() => {
+    document.title = 'Olist E-commerce Pipeline | Yousef Mahmoud';
+  }, []);
 
   const codeFiles: Array<{ id: 'gold_model' | 'airflow_dag' | 'data_tests', name: string, language: string, color: string }> = [
     { id: 'gold_model', name: 'gold_customer_analytics.sql', language: 'SQL', color: 'green' },
