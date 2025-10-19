@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { generateMetadata, SITE_CONFIG } from "@/lib/metadata";
 import "./globals.css";
 
@@ -33,6 +34,27 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {children}
+
+        {/* START: Google Analytics Scripts using Env Var */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+        />
+        <Script
+          id="google-analytics-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+        {/* END: Google Analytics Scripts using Env Var */}
       </body>
     </html>
   );
