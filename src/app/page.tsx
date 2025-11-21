@@ -125,6 +125,12 @@ function PortfolioContent() {
                 Education
               </button>
               <button
+                onClick={() => window.open('/Yousef%20CV.pdf', '_blank')}
+                className="text-gray-600 hover:text-black transition-colors"
+              >
+                CV
+              </button>
+              <button
                 onClick={() => scrollToSection("contact")}
                 className="text-gray-600 hover:text-black transition-colors"
               >
@@ -167,6 +173,12 @@ function PortfolioContent() {
                   Education
                 </button>
                 <button
+                  onClick={() => window.open('/Yousef%20CV.pdf', '_blank')}
+                  className="text-left text-gray-600 hover:text-black transition-colors py-2"
+                >
+                  CV
+                </button>
+                <button
                   onClick={() => scrollToSection("contact")}
                   className="text-left text-gray-600 hover:text-black transition-colors py-2"
                 >
@@ -187,9 +199,9 @@ function PortfolioContent() {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
                   Hi, I'm <span className="underline decoration-4 decoration-black">YOUSEF MAHMOUD</span>
                 </h1>
-                <p className="text-lg md:text-xl text-gray-600">Data Engineer & AI Enthusiast</p>
+                <p className="text-lg md:text-xl text-gray-600">Data Engineer</p>
                 <p className="text-base md:text-lg text-gray-500 max-w-lg mx-auto lg:mx-0">
-                  A recent Computer Science and Artificial Intelligence graduate, currently training as a Data Engineer at ITI. Eager to apply my skills in a professional environment to contribute to the development and optimization of AI-driven solutions.
+                Building scalable ETL pipelines and modern Data Warehouses. I leverage a strong CS & AI foundation to optimize data architectures using Apache Airflow, Spark, and Snowflake.
                 </p>
               </div>
 
@@ -206,6 +218,14 @@ function PortfolioContent() {
                   variant="outline"
                   size="lg"
                   className="border-black text-black hover:bg-black hover:text-white bg-transparent"
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = '/Yousef CV.pdf';
+                    link.download = 'Yousef Mahmoud CV.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }}
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download CV
@@ -247,7 +267,7 @@ function PortfolioContent() {
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">About Me</h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              I am a passionate and driven data professional with a strong foundation in computer science and artificial intelligence. I am currently enhancing my skills in data engineering at the Information Technology Institute (ITI), focusing on building robust and scalable data pipelines.
+            I am a Computer Science graduate passionate about data engineering and automation. Recently completed an intensive training at ITI, where I gained rigorous hands-on experience in designing robust data solutions. My expertise lies in bridging the gap between software engineering and data infrastructure, utilizing tools like Docker and Linux to build efficient, automated workflows. I am driven by the challenge of transforming raw data into actionable business insights.
             </p>
           </div>
         </div>
@@ -264,7 +284,7 @@ function PortfolioContent() {
             <Card className="group hover:shadow-xl transition-all duration-300 border-black">
               <CardHeader>
                 <CardTitle>SkinCa</CardTitle>
-                <CardDescription>A mobile app using machine learning to analyze skin images for early cancer detection.</CardDescription>
+                <CardDescription>Spearheaded an integrated healthcare platform for early skin cancer detection using Deep Learning (CNNs). Built comprehensive patient ecosystem with drug reminder system and doctor-patient chat modules.</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
@@ -351,7 +371,7 @@ function PortfolioContent() {
                         Olist E-commerce Data Warehouse
                       </CardTitle>
                       <CardDescription className="mt-2">
-                        Enterprise-grade ELT pipeline implementing Medallion Architecture for Brazilian e-commerce analytics, featuring Snowflake data warehousing and automated quality testing.
+                        Architected a scalable ELT pipeline processing 100K+ records of Brazilian e-commerce data using Medallion Architecture. Orchestrated daily workflows using Apache Airflow and implemented dbt with 26+ automated tests.
                       </CardDescription>
                     </div>
                     <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors flex-shrink-0 ml-4" />
@@ -394,6 +414,9 @@ function PortfolioContent() {
                     </div>
 
                     <div className="pt-2 border-t border-gray-100">
+                      <p className="text-sm font-medium text-black">
+                        Repo: github.com/YOU5F/Olist ETL Project
+                      </p>
                       <p className="text-sm font-medium text-black group-hover:text-gray-600 transition-colors">
                         View Enterprise DWH Project →
                       </p>
@@ -402,6 +425,64 @@ function PortfolioContent() {
                 </CardContent>
               </Card>
             </Link>
+
+            <Card className="group hover:shadow-xl transition-all duration-300 border-black cursor-pointer h-full">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <CardTitle className="group-hover:text-gray-600 transition-colors">
+                      ITI Examination System
+                    </CardTitle>
+                    <CardDescription className="mt-2">
+                      Engineered a normalized relational database using SQL Server (T-SQL) to manage students, courses, and exams with automated processes.
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline" className="border-black text-black">
+                      SQL Server
+                    </Badge>
+                    <Badge variant="outline" className="border-black text-black">
+                      T-SQL
+                    </Badge>
+                    <Badge variant="outline" className="border-black text-black">
+                      SSMS
+                    </Badge>
+                    <Badge variant="outline" className="border-black text-black">
+                      Docker
+                    </Badge>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                    <div className="flex items-center">
+                      <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                      Stored Procedures
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                      RBAC System
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                      Audit Triggers
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="w-4 h-4 mr-2 text-green-600" />
+                      90% Work Reduction
+                    </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-gray-100">
+                    <p className="text-sm font-medium text-black">
+                      Repo: github.com/YOU5F/CTRL-EXAM
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -446,6 +527,7 @@ function PortfolioContent() {
                   <Badge className="bg-black text-white hover:bg-gray-800">Apache Spark</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Apache Hadoop</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Apache Kafka</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">dbt</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -476,9 +558,11 @@ function PortfolioContent() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-black text-white hover:bg-gray-800">AWS</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">AWS (S3)</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Linux</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Docker</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Git & GitHub</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Jenkins (CI/CD)</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -494,11 +578,14 @@ function PortfolioContent() {
               <CardContent className="space-y-3">
                 <div className="flex flex-wrap gap-2">
                   <Badge className="bg-black text-white hover:bg-gray-800">Snowflake</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">PostgreSQL</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">MySQL</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">MongoDB</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Cassandra</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">SQL Server</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Oracle</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">SQLite</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">SSMS</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -515,7 +602,7 @@ function PortfolioContent() {
                 <div className="flex flex-wrap gap-2">
                   <Badge className="bg-black text-white hover:bg-gray-800">Pandas</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">NumPy</Badge>
-                  <Badge className="bg-black text-white hover:bg-gray-800">Plotly</Badge>
+                  <Badge className="bg-black text-white hover:bg-gray-800">Matplotlib</Badge>
                   <Badge className="bg-black text-white hover:bg-gray-800">Power BI</Badge>
                 </div>
               </CardContent>
@@ -573,9 +660,9 @@ function PortfolioContent() {
                   <div>
                     <CardTitle className="flex items-center">
                       <GraduationCap className="w-5 h-5 mr-2 text-black" />
-                      Bachelor's in Computer Science and AI
+                      Bachelor's in Computer Science & AI
                     </CardTitle>
-                    <CardDescription className="mt-2">Beni Suef University</CardDescription>
+                    <CardDescription className="mt-2">Beni-Suef University</CardDescription>
                   </div>
                   <Badge variant="secondary" className="bg-black text-white self-start">
                     2020 - 2024
@@ -583,23 +670,32 @@ function PortfolioContent() {
                 </div>
               </CardHeader>
             </Card>
+
             <Card className="border-black">
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
                   <div>
                     <CardTitle className="flex items-center">
                       <Award className="w-5 h-5 mr-2 text-black" />
-                      Data Engineer Training
+                      Data Engineering Training Program
                     </CardTitle>
                     <CardDescription className="mt-2">Information Technology Institute (ITI)</CardDescription>
                   </div>
+                  <Badge variant="secondary" className="bg-black text-white self-start">
+                    June 2025 – Nov 2025
+                  </Badge>
                 </div>
               </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600">
+                  Completed an intensive 4-month Data Engineering specialization. Developed end-to-end data pipelines using Apache Airflow & Spark, and designed optimized Data Warehouses with Snowflake & dbt.
+                </p>
+              </CardContent>
             </Card>
           </div>
         </div>
       </section>
-
+{/* Contact Section */}
       {/* Contact Section */}
       <section id="contact" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
@@ -638,7 +734,7 @@ function PortfolioContent() {
                     </div>
                     <div>
                       <p className="font-medium text-black">Location</p>
-                      <p className="text-gray-600">Beni Suef City, Egypt</p>
+                      <p className="text-gray-600">Cairo, Egypt</p>
                     </div>
                   </div>
                 </div>
@@ -717,7 +813,7 @@ function PortfolioContent() {
           <Separator className="mb-8 bg-gray-700" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
-              <p className="text-gray-300">© 2024 YOUSEF MAHMOUD. All rights reserved.</p>
+              <p className="text-gray-300">© 2025 YOUSEF MAHMOUD. All rights reserved.</p>
             </div>
           </div>
         </div>
