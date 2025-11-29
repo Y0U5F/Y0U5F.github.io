@@ -125,7 +125,7 @@ function PortfolioContent() {
                 Education
               </button>
               <button
-                onClick={() => window.open('/Yousef%20CV.pdf', '_blank')}
+                onClick={() => window.open('/Yousef_CV.pdf', '_blank')}
                 className="text-gray-600 hover:text-black transition-colors"
               >
                 CV
@@ -220,7 +220,7 @@ function PortfolioContent() {
                   className="border-black text-black hover:bg-black hover:text-white bg-transparent"
                   onClick={() => {
                     const link = document.createElement('a');
-                    link.href = '/Yousef CV.pdf';
+                    link.href = '/Yousef_CV.pdf';
                     link.download = 'Yousef Mahmoud CV.pdf';
                     document.body.appendChild(link);
                     link.click();
